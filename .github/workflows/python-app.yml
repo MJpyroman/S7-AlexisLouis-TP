@@ -26,5 +26,9 @@ jobs:
         run: |
           python app.py &
           sleep 5
-          curl -s http://127.0.0.1:5000 | grep -q "Raptus Generator"
-          pkill -f "app.py"
+          if ! curl -s http://127.0.0.1:5000 | grep -q "Team Name Generator"; then
+            echo "Erreur : Le serveur Flask ne répond pas correctement"
+            cat flask.log
+            exit 1
+          fi
+          pkill -f "app.py" || true 
