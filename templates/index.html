@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Team Name Generator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+            background-color: #f0f0f0;
+        }
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            max-width: 500px;
+            margin: 0 auto;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .team-name {
+            font-size: 24px;
+            font-weight: bold;
+            color: #2c3e50;
+            margin: 20px 0;
+        }
+        button {
+            background: #3498db;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Team Name Generator</h1>
+        <p>Génère un nom d'équipe aléatoire :</p>
+        <div class="team-name">{{ team_name }}</div>
+        <button onclick="window.location.reload()">Nouveau nom</button>
+    </div>
+</body>
+</html>

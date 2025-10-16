@@ -1,4 +1,4 @@
-name: Python application
+name: Python Flask App CI
 
 on:
   push:
@@ -7,18 +7,29 @@ on:
     branches: [ "main" ]
 
 jobs:
-  build:
+  test:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
+
     - name: Set up Python
       uses: actions/setup-python@v4
       with:
         python-version: '3.10'
+
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
-        if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
-    - name: Run generator
+        pip install -r requirements.txt
+
+    - name: Test generator script
       run: |
-        python generator.py
+        python app.py
+
+    - name: Start Flask app (test)
+      run: |
+        python -m flask --version
+        # Démarre l'app en arrière-plan pour vérifier qu'elle se lance
+        timeout 5s python app.py &
+        sleep 3
+        curl -s http://127.0.0.1:5000 | grep -q "Team Name Generator"
