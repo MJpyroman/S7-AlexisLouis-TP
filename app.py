@@ -14,4 +14,4 @@ def home():
     return render_template("index.html", team_name=team_name)
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run()
