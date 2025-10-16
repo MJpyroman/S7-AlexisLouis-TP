@@ -23,7 +23,7 @@ jobs:
         pip install -r requirements.txt
 
     - name: Test generator script
-      run: python generator.py
+      run: python app.py
 
     - name: Start Flask app and test
       run: |
